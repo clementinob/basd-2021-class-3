@@ -1,4 +1,4 @@
-header{
+/*header{
   height: 6%;
   width: 100%;
   background-color: #eb5160;
@@ -15,4 +15,49 @@ header{
   height: 5px;
   background-color: #dfe0e2;
   margin: 6px 0;
+} */
+
+header {
+  background-color: #eb5160;
+  color: #dfe0e2;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: 2px solid #071013;
+}
+
+header h1{
+  text-shadow: 0.1em 0.1em 0.2em black;
+}
+
+
+@media only screen and (min-width: 600px){
+
+.hamb_button{
+  background-color: #eb5160;
+  border-radius: 3px;
+  border: 1px solid #071013;
+}
+
+.hamb_button div{
+  width: 35px;
+  height: 5px;
+  background-color: #dfe0e2;
+  margin: 6px 0;
+}
+
+header ul {
+  list-style-type: none;
+  margin:0;
+  padding:0px;
+  display: flex;
+}
+
+header li{
+  
+}
+header a{
+  color: #dfe0e2;
+  text-decoration: none;
+}
+
 }

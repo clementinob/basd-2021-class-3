@@ -18,46 +18,74 @@
 } */
 
 header {
+  display: flex;
+  align-items: center;
   background-color: #eb5160;
   color: #dfe0e2;
-  padding-top: 30px;
-  min-height: 70px;
-  border-bottom: 2px solid #071013;
+  min-height: 90px;
+  border-bottom: 3px solid #071013;
+}
+
+header .container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1{
   text-shadow: 0.1em 0.1em 0.2em black;
+  font-size: 1.9em;
 }
 
+#branding a{
+  text-decoration: none;
+  color: #dfe0e2;
+}
 
-@media only screen and (min-width: 600px){
+#branding a:hover{
+  color:#071013;
+  text-shadow: 0.1em 0.1em 0.2em rgb(145, 143, 143);
+}
+
+header ul {
+  display: none;
+}
 
 .hamb_button{
+  display: block;
   background-color: #eb5160;
   border-radius: 3px;
   border: 1px solid #071013;
 }
 
 .hamb_button div{
-  width: 35px;
-  height: 5px;
+  width: 25px;
+  height: 3px;
   background-color: #dfe0e2;
   margin: 6px 0;
 }
 
-header ul {
-  list-style-type: none;
-  margin:0;
-  padding:0px;
-  display: flex;
-}
+@media only screen and (min-width: 600px){
 
-header li{
+  .hamb_button{
+    display: none;
+  }
+
+  header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
   
-}
-header a{
-  color: #dfe0e2;
-  text-decoration: none;
-}
+  header a{
+    color: #dfe0e2;
+    text-decoration: none;
+  }
+
+  header a:hover{
+    color: black;
+    text-decoration: none;
+  }
 
 }

@@ -5,7 +5,172 @@ body{
 }
 
 .container{
-  width: 80%;
+  width: 85%;
   margin: auto;
   overflow: hidden;
+}
+
+.categories{
+  width: 100%;
+  margin:0;
+  padding:0;
+  background-color: #071013;
+  color: #dfe0e2;
+  font-size: 0.9em;
+}
+
+.categories ul{
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 0;
+  padding-right: 0;
+  list-style-type: none;
+}
+
+.categories li{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.categories ul li a, i{
+  padding: 0 5px;
+}
+
+.categories ul li a{
+  color: #dfe0e2;
+  text-decoration: none;
+}
+
+.categories ul li a:hover{
+  color: #eb5160;
+}
+
+.categories ul li i{
+  font-size: 0.5em;
+}
+
+#heading_New{
+  padding-top: 15px;
+  margin-bottom: 30px;
+  background-color: #b7999c;
+  border-bottom: 2px solid #686868;
+}
+
+#heading_New a{
+  color: #071013;
+  text-decoration: none; 
+}
+
+#heading_New a:hover{
+  color: #eb5160;
+}
+
+.container_Heading-New img{
+  max-width:100%;
+}
+
+.articles{
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #AAAAAA;
+}
+
+.articles h3{
+  margin: 10px 0;
+}
+
+.articles article{ 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.articles img{
+  max-width: 50%;
+}
+
+.articles a{
+  color: #eb5160;
+  text-decoration: none;
+}
+
+.articles a:hover{
+  color: #071013;
+  text-decoration: none;
+}
+
+#newsletter {
+  background-color: #aaaaaa;
+  padding-bottom: 5%;
+}
+
+#newsletter .container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#newsletter button{
+  background-color: #eb5160;
+  color: #dfe0e2;
+  border-radius: 2px;
+  padding: 3% 2%;
+}
+
+#newsletter input{
+  height: 5vh;
+  width: 60%;
+}
+
+footer{
+  background-color: #071013;
+  color: #dfe0e2;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px;
+  padding: 5% 3%;
+}
+
+footer span, h4{
+  color: #eb5160;
+}
+
+footer a{
+  color: #dfe0e2;
+  text-decoration: none;
+}
+
+footer a:hover{
+  color: #eb5160;
+}
+
+footer .nav_Wrapper{
+  display: flex;
+
+}
+
+footer .nav_Wrapper navbar{
+  border-right: 2px solid #eb5160;
+}
+
+footer ul{
+  list-style-type: none;
+  margin: 0;
+  padding-right: 10px;
+  padding-left: 25px;
+}
+
+footer h4{
+  margin: 0px;
+  justify-content: flex-end;
+}
+
+.copyright_Wrapper{
+  display: flex;
+  flex-direction: column;
+
 }

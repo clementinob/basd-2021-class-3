@@ -1,125 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal News</title>
-  <!-- Styles -->
-  <link rel="stylesheet" href="./styles/normalizer.css" />
-  <link rel="stylesheet" href="./styles/index.css" />
-  <link rel="stylesheet" href="./styles/header.css" />
-  <link rel="stylesheet" href="./styles/footer.css" />
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@500&display=swap" rel="stylesheet">
-  <!-- Icons -->
-  <link href="./assets/icons/fontawesome-free-5.15.4-web/css/fontawesome.css" rel="stylesheet">
-  <link href="./assets/icons/fontawesome-free-5.15.4-web/css/brands.css" rel="stylesheet">
-  <link href="./assets/icons/fontawesome-free-5.15.4-web/css/solid.css" rel="stylesheet">
-  
-  
-</head>
-<body>
-  <header>
-    <div class="container">
-      <div id="branding">
-        <h1>News Portal</h1>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Bruno Clementino">
+    <meta name="keywords" content="HTML, CSS, RadiumRocket, Portal News, News Portal, Tech, Technology">
+    <title>RR News Portal</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="./styles/normalizer.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/header.css" />
+    <link rel="stylesheet" href="./styles/footer.css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link href="./assets/icons/fontawesome-free-5.15.4-web/css/fontawesome.css" rel="stylesheet">
+    <link href="./assets/icons/fontawesome-free-5.15.4-web/css/brands.css" rel="stylesheet">
+    <link href="./assets/icons/fontawesome-free-5.15.4-web/css/solid.css" rel="stylesheet">
+    
+    
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><a href="#">RR News Portal</a></h1>
+        </div>
+        <navbar> 
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Login</a></li>
+          </ul>
+          <button class="hamb_button">
+            <div></div>
+            <div></div>
+            <div></div>
+          </button>
+        </navbar>
       </div>
-      <button class="hamb_button">
-        <div></div>
-        <div></div>
-        <div></div>
-      </button>
-      <navbar> 
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Login</a></li>
-        </ul>
-      </navbar>
-    </div>
-  </header>
-  <section id="heading_New">
-    <div class="container">
-      <h2>Noticia Cabecera</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque rem 
-        sint ipsam natus tenetur laudantium repudiandae optio deserunt asperiores 
-        assumenda, officiis illum quisquam, laudantium repudiandae optio deserunt asperiores 
-        assumenda, officiis illum quisquam delectus quo voluptas, explicabo 
-        quam? Obcaecati, aperiam.
-      </p>
-    </div>
-  </section>
-  <section id="main_News">
-    <div class="container">
-      <div class="articles">
-        <article>
-          <img />
-          <h3>Noticia 1</h3>
-          <p>Lorem ipsum dolor sit ametdolor sit ametdolor sit ametdolor sit amet.</p>
-        </article>
+    </header>
+    <main>
+      <div class="categories">
+        <div class="container">
+          <ul>
+            <li>
+              <a href="#">Tech</a>
+              <i class="fas fa-circle"></i>
+            </li>
+            <li>
+              <a href="#">Science</a>
+              <i class="fas fa-circle"></i>
+            </li>
+            <li>
+              <a href="#">Crypto</a>
+              <i class="fas fa-circle"></i>
+            </li>
+            <li>
+              <a href="#">Gaming</a>
+              <i class="fas fa-circle"></i>
+            </li>
+            <li>
+              <a href="#">Finance</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="articles">
-        <article>
-          <img src="assets/img/" />
-          <h3>Noticia 2</h3>
-          <p>Lorem ipsum dolor sit ametdolor sit ametdolor sit ametdolor sit amet.</p>
-        </article>
-      </div><div class="articles">
-        <article>
-          <img src="assets/img/" />
-          <h3>Noticia 3</h3>
-          <p>Lorem ipsum dolor sit ametdolor sit ametdolor sit ametdolor sit amet.</p>
-        </article>
-      </div><div class="articles">
-        <article>
-          <img src="assets/img/" />
-          <h3>Noticia 4</h3>
-          <p>Lorem ipsum dolor sit ametdolor sit ametdolor sit ametdolor sit amet.</p>
-        </article>
-      </div><div class="articles">
-        <article>
-          <img src="assets/img/" />
-          <h3>Noticia 5</h3>
-          <p>Lorem ipsum dolor sit ametdolor sit ametdolor sit ametdolor sit amet.</p>
-        </article>
-      </div><div class="articles">
-        <article>
-          <img src="assets/img/" />
-          <h3>Noticia 6</h3>
-          <p>Lorem ipsum dolor sit ametdolor sit ametdolor sit ametdolor sit amet.</p>
-        </article>
-      </div><div class="articles">
-        <article>
-          <img src="assets/img/" />
-          <h3>Noticia 7</h3>
-          <p>Lorem ipsum dolor sit ametdolor sit ametdolor sit ametdolor sit amet.</p>
-        </article>
-      </div><div class="articles">
-        <article>
-          <img src="assets/img/" />
-          <h3>Noticia 8</h3>
-          <p>Lorem ipsum dolor sit ametdolor sit ametdolor sit ametdolor sit amet.</p>
-        </article>
+      <section id="heading_New">
+        <div class="container">
+          <div class="container_Heading-New">
+            <h2><a href="#">Top 5 cryptocurrencies to watch this week: BTC, LUNA, ATOM, XTZ, AXS</a></h2>
+            <img src="assets/img/bitcoin_800x533_L_1411988633.jpg" />
+            <p>
+              The sentiment in the crypto markets can change quickly as seen from the Crypto Fear and Greed Index, 
+              which has risen from levels of extreme fear on Sept. 30 to neutral today.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section id="main_News">
+        <div class="container">
+          <div class="news_Wrapper">
+            <div class="articles">
+              <article>
+                <img src="assets/img/venom.jpg" />
+                <div>
+                  <h3><a href="#">Venom: Let There Be Carnage Review</a></h3>
+                  <p>
+                    Director Andy Serkis describes Venom: Let There Be Carnage as a love story between 
+                    Eddie Brock and Venom. "Let There Be Carnage" hits theaters on Oct. 1.
+                  </p>
+                </div>
+              </article>
+            </div>
+            <div class="articles">
+              <article>
+                <img src="assets/img/applewatch.webp" />
+                <div>
+                  <h3><a href="#">Apple Watch flags multiple types of irregular heartbeats, study shows</a></h3>
+                  <p>Cardiologists are still unsure of the best way to handle alerts that aren’t atrial fibrillation.</p>
+                </div>
+              </article>
+            </div>
+            <div class="articles">
+              <article>
+                <img src="assets/img/far-cry-villains.jpeg" />
+                <div>
+                  <h3><a href="#">How Far Cry's Iconic Villains Were Created</a></h3>
+                  <p>The inside story about how the bloody heart of the series was born.</p>
+                </div>
+              </article>
+            </div>
+            <div class="articles">
+              <article>
+                <img src="assets/img/vaccine_0002.0.webp" />
+                <div>
+                  <h3><a href="#">YouTube bans vaccine misinformation</a></h3>
+                  <p>The platform is also banning prominent anti-vaccine activists.</p>
+                </div>
+              </article>
+            </div>
+            <div class="articles">
+              <article>
+                <img src="assets/img/acastro_200512_1777_socialDistance_0001.0.0.webp" />
+                <div>
+                  <h3><a href="#">FTC resurrects a decade-old rule as a guardrail on the health app explosion</a></h3>
+                  <p>The agency can’t shore up health app privacy on its own.</p>
+                </div>
+              </article>
+            </div>
+            <div class="articles">
+              <article>
+                <img src="assets/img/LYNXNPEE1J1IK_L.jpg" />
+                <div>
+                  <h3><a href="#">Money in 2030: A future where DeFi and CBDCs can work together</a></h3>
+                  <p>Decentralized finance (DeFi) is changing the way that people all over the world think about money faster than any previous financial revolution.</p>
+                </div>
+              </article>
+            </div>
+            <div class="articles">
+              <article>
+                <img src="assets/img/thumb-1920-1177222.jpg" />
+                <div>
+                  <h3><a href="#">Squid Game: Season 1 Review</a></h3>
+                  <p>You'll never look at "Red Light, Green Light" the same way again.</p>
+                </div>
+              </article>
+            </div>
+            <div class="articles">
+              <article>
+                <img src="assets/img/Halo_Infinite_2021_Video_Game_4K_HD_Poster_1366x768.jpg" />
+                <div>
+                  <h3><a href="#">Halo Infinite Multiplayer Review in Progress: Test Flight Impressions</a></h3>
+                  <p>Halo Infinite’s multiplayer just finished its second “preview test flight” this past weekend.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <section id="newsletter">
+      <div class="container">
+        <form>
+          <h2>Subscribe to our Newsletter!</h2>
+          <input type="email" placeholder="Email...">
+          <button type="submit" class="newsletter_Button">Subscribe</button>
+        </form>
       </div>
-    </div>
-  </section>
-  <section id="newsletter">
-    <div class="container">
-      <form>
-        <h2>Subscribe to our Newsletter!</h2>
-        <input type="email" placeholder="Email...">
-        <button type="submit" class="newsletter_Button">Subscribe</button>
-      </form>
-    </div>
-  </section>
-  <footer>
-    <h3>News Portal, Copyright &copy; 2021</h3>
-    <img>
-    <navbar></navbar>
-  </footer>
-</body>
+    </section>
+    <footer>
+      <div class="nav_Wrapper">
+        <navbar>
+          <ul class="footer_Site">
+            <span>Our site:</span>
+            <li><a href="">Home</a></li>
+            <li><a href="">About us</a></li>
+          </ul>
+        </navbar>
+        <navbar>
+          <ul class="footer_Categories">
+            <span>Categories:</span>
+            <li><a href="">Tech</a></li>
+            <li><a href="">Science</a></li>
+            <li><a href="">Crypto</a></li>
+            <li><a href="">Gaming</a></li>
+            <li><a href="">Finance</a></li>
+          </ul>
+        </navbar>
+      </div>
+      <div class="copyright_Wrapper">
+      <h4>News Portal</h4>
+      <h4>Copyright &copy; 2021</h4>
+      </div>
+    </footer>
+  </body>
 </html>

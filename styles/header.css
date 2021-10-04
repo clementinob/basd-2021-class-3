@@ -1,22 +1,3 @@
-/*header{
-  height: 6%;
-  width: 100%;
-  background-color: #eb5160;
-}
-
-.hamb_button{
-  background-color: #eb5160;
-  border-radius: 3px;
-  border: 1px solid #071013;
-}
-
-.hamb_button div{
-  width: 35px;
-  height: 5px;
-  background-color: #dfe0e2;
-  margin: 6px 0;
-} */
-
 header {
   display: flex;
   align-items: center;
@@ -65,10 +46,14 @@ header ul {
   margin: 6px 0;
 }
 
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 480px){
 
   .hamb_button{
     display: none;
+  }
+
+  .container navbar{
+    width: 40%;
   }
 
   header ul {
@@ -76,11 +61,14 @@ header ul {
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
   
   header a{
     color: #dfe0e2;
     text-decoration: none;
+    justify-content: space-around;
   }
 
   header a:hover{
@@ -88,4 +76,10 @@ header ul {
     text-decoration: none;
   }
 
+}
+
+@media only screen and (min-width: 768px){
+  .container navbar{
+    width: 30%;
+  }
 }

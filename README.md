@@ -3,5 +3,5 @@
 
 ---
 
-### Link del Git Pages: https://www.ign.com/articles/battlefield-2042-delayed
+### Link del Git Pages: https://clementinob.github.io/basd-2021-class-3/
 ---

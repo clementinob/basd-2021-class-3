@@ -15,7 +15,7 @@ header .container{
 
 header h1{
   text-shadow: 0.1em 0.1em 0.2em black;
-  font-size: 1.9em;
+  font-size: calc(1em + 1vw);
 }
 
 #branding a{

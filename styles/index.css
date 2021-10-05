@@ -53,8 +53,8 @@ body{
 
 #heading_New{
   padding-top: 15px;
-  margin-bottom: 30px;
-  background-color: #b7999c;
+  background-image: url(../assets/img/wave-haikei.svg);
+  background-size:cover;
   border-bottom: 2px solid #686868;
   display: flex;
   justify-content: center;
@@ -78,10 +78,17 @@ body{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .container_Heading-New img{
   max-width:100%;
+}
+
+#main_News{
+  padding: 20px 0;
+  background-image: url(../assets/img/low-poly-grid-haikei2.svg);
+  background-size:cover;
 }
 
 .articles{
@@ -188,7 +195,4 @@ body{
   .container_Heading-New div {
     width: 50%;
   }
-
 }
-
-

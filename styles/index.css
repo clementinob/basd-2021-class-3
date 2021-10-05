@@ -56,6 +56,8 @@ body{
   margin-bottom: 30px;
   background-color: #b7999c;
   border-bottom: 2px solid #686868;
+  display: flex;
+  justify-content: center;
 }
 
 #heading_New .container{
@@ -126,21 +128,17 @@ body{
 #newsletter button{
   background-color: #eb5160;
   color: #dfe0e2;
-  border-radius: 2px;
+  border-radius: 5px;
   padding: 3% 2%;
 }
 
 #newsletter input{
   height: 5vh;
   width: 60%;
+  border-radius: 5px;
 }
 
-
 @media only screen and (min-width: 480px) {
-  .container_Heading-New img{
-    max-width: 100%;
-  }
-  
   .news_Wrapper{
     display: flex;
     flex-direction: row;
@@ -167,14 +165,8 @@ body{
   }
 }
 
-
 @media only screen and (min-width: 768px){
-  
-
-  .container_Heading-New img{
-    max-width: 80%;
-  }
-
+ 
   .articles{
     flex: 30%;
   }
@@ -183,6 +175,20 @@ body{
     justify-content: center;
     align-items: center;
   }
+
+  .container_Heading-New {
+    display: flex;
+    flex-direction: row;
+  }
+  .container_Heading-New img {
+    margin-right: 20px;
+    padding-bottom: 20px;
+    width: 50%;
+  }
+  .container_Heading-New div {
+    width: 50%;
+  }
+
 }
 
 

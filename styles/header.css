@@ -53,7 +53,7 @@ header ul {
   }
 
   .container navbar{
-    width: 40%;
+    width: 42%;
   }
 
   header ul {
@@ -75,11 +75,10 @@ header ul {
     color: black;
     text-decoration: none;
   }
-
 }
 
 @media only screen and (min-width: 768px){
   .container navbar{
-    width: 30%;
+    width: 27%;
   }
 }

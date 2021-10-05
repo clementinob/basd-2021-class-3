@@ -54,7 +54,7 @@ body{
 #heading_New{
   padding-top: 15px;
   background-image: url(../assets/img/wave-haikei.svg);
-  background-size:cover;
+  background-size: contain;
   border-bottom: 2px solid #686868;
   display: flex;
   justify-content: center;
@@ -88,7 +88,7 @@ body{
 #main_News{
   padding: 20px 0;
   background-image: url(../assets/img/low-poly-grid-haikei2.svg);
-  background-size:cover;
+  background-size: contain;
 }
 
 .articles{
@@ -104,6 +104,10 @@ body{
 .articles article{ 
   display: flex;
   flex-wrap: wrap;
+}
+
+article div{
+  width: 100%;
 }
 
 .articles img{
@@ -155,7 +159,7 @@ body{
 
   .articles{
     flex: 45%;
-    padding-right: 15px;
+    margin-right: 25px;
     border-bottom: none;
   }
 
@@ -173,7 +177,14 @@ body{
 }
 
 @media only screen and (min-width: 768px){
- 
+  #main_News{
+    background-size: cover;
+  }
+
+  #heading_New{
+    background-size: cover;
+  }
+
   .articles{
     flex: 30%;
   }

@@ -198,11 +198,13 @@ article div{
     display: flex;
     flex-direction: row;
   }
+
   .container_Heading-New img {
     margin-right: 20px;
     padding-bottom: 20px;
     width: 50%;
   }
+  
   .container_Heading-New div {
     width: 50%;
   }

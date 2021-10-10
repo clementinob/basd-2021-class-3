@@ -78,6 +78,7 @@ header ul {
 }
 
 @media only screen and (min-width: 768px){
+  
   .container navbar{
     width: 27%;
   }

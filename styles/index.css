@@ -1,5 +1,5 @@
 body{
-  font: 15px/1.5 'Poppins', Arial, sans-serif;
+  font: 15px/1.5 'Poppins', Helvetica, sans-serif;
   background-color: #dfe0e2;
   color: #071013;
 }
@@ -172,7 +172,6 @@ article div{
   .articles img{
     height:max-content;
     max-width: 100%;
-    max-height: 90%;
   }
 }
 

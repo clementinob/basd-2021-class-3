@@ -39,10 +39,49 @@ footer ul{
 
 footer h4{
   margin: 0px;
-  justify-content: flex-end;
 }
 
 .footer_Copyright-Wrapper{
   display: flex;
   flex-direction: column;
+  height: 90px;
+  align-items:flex-end;
+  justify-content: flex-end;
 }
+
+.footer_Copyright-Wrapper .logo{
+  color: #dfe0e2;
+  font-size: calc(1em + 1vw);
+}
+
+@media only screen and (min-width: 768px){
+  
+  footer{
+    font-size: 1em;
+  }
+
+  footer .nav_Wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 90px;
+  }
+  
+  footer .nav_Wrapper navbar{
+    border-right: 0px;
+    border-bottom: 2px solid #eb5160;
+  }
+  
+  footer ul{
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    margin: 0;
+  }
+
+  footer ul, li{
+    padding: 3px 5px;
+  }
+}
+
+  

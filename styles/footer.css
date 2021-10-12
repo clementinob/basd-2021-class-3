@@ -26,6 +26,10 @@ footer .nav_Wrapper{
   display: flex;
 }
 
+footer .nav_Wrapper i{
+  display: none;
+}
+
 footer .nav_Wrapper navbar{
   border-right: 2px solid #eb5160;
 }
@@ -57,19 +61,27 @@ footer h4{
 @media only screen and (min-width: 768px){
   
   footer{
-    font-size: 1em;
+    font-size: 1.1em;
   }
 
   footer .nav_Wrapper{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 90px;
+    height: 120px;
+    max-width: 50%;
+  }
+
+  footer .nav_Wrapper i{
+    display:contents;
+    padding-right: 10px;
   }
   
   footer .nav_Wrapper navbar{
     border-right: 0px;
     border-bottom: 2px solid #eb5160;
+    padding-top: 20px;
+    padding-bottom: 15px;
   }
   
   footer ul{
@@ -80,7 +92,18 @@ footer h4{
   }
 
   footer ul, li{
-    padding: 3px 5px;
+    display: flex;
+    flex-direction: row;
+    padding: 0px 3px;
+    align-items: center;
+  }
+
+  footer i{
+    font-size: 0.5em;
+  }
+
+  footer ul span{
+    padding-right: 5px;
   }
 }
 

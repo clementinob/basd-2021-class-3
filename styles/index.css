@@ -1,5 +1,5 @@
 body{
-  font: 15px/1.5 'Poppins', Helvetica, sans-serif;
+  font: 0.9em/1.5 'Poppins', Helvetica, sans-serif;
   background-color: #dfe0e2;
   color: #071013;
 }
@@ -144,7 +144,7 @@ article div{
 }
 
 #newsletter input{
-  height: 5vh;
+  height: 32px;;
   width: 60%;
   border-radius: 5px;
 }
@@ -176,6 +176,10 @@ article div{
 }
 
 @media only screen and (min-width: 768px){
+  .categories {
+    font-size: 1.1em;
+  }
+
   #main_News{
     background-size: cover;
   }
@@ -207,4 +211,9 @@ article div{
   .container_Heading-New div {
     width: 50%;
   }
+}
+
+@media only screen and (min-width: 1440px){
+
+
 }

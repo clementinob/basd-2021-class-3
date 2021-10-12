@@ -36,14 +36,10 @@ header ul {
   display: block;
   background-color: #eb5160;
   border-radius: 3px;
-  border: 1px solid #071013;
-}
-
-.hamb_button div{
-  width: 25px;
-  height: 3px;
-  background-color: #dfe0e2;
-  margin: 6px 0;
+  border: 2px solid #071013;
+  color: #dfe0e2;
+  font-size: 1.8em;
+  padding: 4px 2px 2px 2px;
 }
 
 @media only screen and (min-width: 480px){
@@ -80,6 +76,6 @@ header ul {
 @media only screen and (min-width: 768px){
   
   .container navbar{
-    width: 27%;
+    width: 28%;
   }
 }

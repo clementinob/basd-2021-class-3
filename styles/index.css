@@ -143,6 +143,11 @@ article div{
   padding: 3% 2%;
 }
 
+#newsletter a{
+  text-decoration: none;
+  color: #dfe0e2;
+}
+
 #newsletter input{
   height: 32px;;
   width: 60%;
@@ -211,9 +216,4 @@ article div{
   .container_Heading-New div {
     width: 50%;
   }
-}
-
-@media only screen and (min-width: 1440px){
-
-
 }

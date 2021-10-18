@@ -7,6 +7,8 @@
     <meta name="author" content="Bruno Clementino">
     <meta name="keywords" content="HTML, CSS, RadiumRocket, Portal News, News Portal, Tech, Technology">
     <title>RR News Portal - Subscribe</title>
+    <!-- JS -->
+    <script src="./js/subscription.js"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="./styles/normalizer.css" />
     <link rel="stylesheet" href="./styles/index.css" />
@@ -72,18 +74,37 @@
     <section id="header_Salute">
       <h2>HI, </h2>
     </section>
-    <section id="form"> 
-      <input type="text" placeholder="Full name">
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Password">
-      <input type="number" placeholder="Age">
-      <input type="tel" placeholder="Phone">
-      <input type="text" placeholder="Adress">
-      <input type="text" placeholder="City">
-      <input type="text" placeholder="Zip Code">
-      <input type="number" placeholder="ID Number">
+    <form id="form">
+      <p>Full Name</p>
+      <input id="fullName" type="text" name="fullName" required>
+      <div id="fullNameError" class="error_Message"></div>
+      <p>Email</p>
+      <input id="email" type="email" name="email" required>
+      <div id="emailError" class="error_Message"></div>
+      <p>Password</p>
+      <input id="password" type="password" name="password" required>
+      <div id="passwordError" class="error_Message"></div>
+      <p>Age</p>
+      <input id="age" type="number" name="age" required>
+      <div id="ageError" class="error_Message"></div>
+      <p>Phone</p>
+      <input id="phone" type="number" name="phone" required>
+      <div id="phoneError" class="error_Message"></div>
+      <p>Adress</p>
+      <input id="adress" type="text" name="adress" required>
+      <div id="adressError" class="error_Message"></div>
+      <p>City</p>
+      <input id="city" type="text" name="city" required>
+      <div id="cityError" class="error_Message"></div>
+      <p>Zip Code</p>
+      <input id="zipCode" type="text" name="zipCode" required>
+      <div id="zipCodeError" class="error_Message"></div>
+      <p>ID Number</p>
+      <input id="idNumber" type="number" name="idNumber" required>
+      <div id="idNumberError" class="error_Message"></div>
+
       <button type="submit" class="newsletter_Button">Subscribe</button>
-    </section>
+    </form>
 
   </main>
   <footer>

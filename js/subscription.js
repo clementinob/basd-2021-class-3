@@ -9,6 +9,19 @@ window.onload = function() {
   var city = document.getElementById("city");
   var zipCode = document.getElementById("zipCode");
   var idNumber = document.getElementById("idNumber");
+  var buttonSubmit = document.getElementById("buttonSubmit");
+
+ /* var validations = {
+    fullNameValid : false,
+    emailValid : false,
+    passwordValid : false,
+    ageValid : false,
+    phoneValid : false,
+    adressValid : false,
+    cityValid : false,
+    zipCodeValid : false,
+    idNumberValid : false
+  };*/
 
   fullName.onblur = function validateFullName() {
     var inputName = fullName.value;
@@ -22,6 +35,12 @@ window.onload = function() {
       error.style.display = "none";
       document.getElementById("fullName").style.background = "rgb(255 255 255)";
     }
+  }
+
+  fullName.onfocus = function cleanFullNameError(){
+    var error = document.getElementById("fullNameError");
+    error.style.display = "none";
+    document.getElementById("fullName").style.background = "rgb(255 255 255)";
   }
 
   email.onblur = function validateEmail() {
@@ -38,6 +57,12 @@ window.onload = function() {
     }
   }
 
+  email.onfocus = function cleanEmailError(){
+    var error = document.getElementById("emailError");
+    error.style.display = "none";
+    document.getElementById("email").style.background = "rgb(255 255 255)";
+  }
+
   password.onblur = function validatePassword(){
     var inputPassword = password.value;
     var error = document.getElementById("passwordError");
@@ -51,6 +76,12 @@ window.onload = function() {
       error.style.display = "none";
       document.getElementById("password").style.background = "rgb(255 255 255)";
     }
+  }
+
+  password.onfocus = function cleanPasswordError(){
+    var error = document.getElementById("passwordError");
+    error.style.display = "none";
+    document.getElementById("password").style.background = "rgb(255 255 255)";
   }
   
   age.onblur = function validateInputAge(){
@@ -68,6 +99,12 @@ window.onload = function() {
     }
   }
 
+  age.onfocus = function cleanAgeError(){
+    var error = document.getElementById("ageError");
+    error.style.display = "none";
+    document.getElementById("age").style.background = "rgb(255 255 255)";
+  }
+
   phone.onblur = function validateInputPhone(){
     var inputPhone = phone.value;
     var error = document.getElementById("phoneError");
@@ -83,11 +120,17 @@ window.onload = function() {
     }
   }
 
+  phone.onfocus = function cleanPhoneError(){
+    var error = document.getElementById("phoneError");
+    error.style.display = "none";
+    document.getElementById("phone").style.background = "rgb(255 255 255)";
+  }
+
   adress.onblur = function validateInputAdress(){
     var inputAdress = adress.value;
     var error = document.getElementById("adressError");
 
-    if (inputAdress.length < 5 || inputAdress.indexOf(' ') == -1 || !validateAlphanumeric(inputAdress)){
+    if (inputAdress.length < 5 || inputAdress.indexOf(' ') == -1 || !validateAlphanumeric(inputAdress.value)){
       var message = "The address entered must be at least 5 alphanumeric characters and separated by a blank space.";
       error.innerHTML = message;
       error.style.display = "block";
@@ -96,6 +139,12 @@ window.onload = function() {
       error.style.display = "none";
       document.getElementById("adress").style.background = "rgb(255 255 255)";
     }
+  }
+
+  adress.onfocus = function cleanFAdressError(){
+    var error = document.getElementById("adressError");
+    error.style.display = "none";
+    document.getElementById("adress").style.background = "rgb(255 255 255)";
   }
 
   city.onblur = function validateInputCity(){
@@ -113,6 +162,12 @@ window.onload = function() {
     }
   }
 
+  city.onfocus = function cleanCityError(){
+    var error = document.getElementById("cityError");
+    error.style.display = "none";
+    document.getElementById("city").style.background = "rgb(255 255 255)";
+  }
+
   zipCode.onblur = function validateInputZipCode(){
     var inputZipCode = zipCode.value;
     var error = document.getElementById("zipCodeError");
@@ -128,21 +183,52 @@ window.onload = function() {
     }
   }
 
-  idNumber.onblur = function validateInputIdNumber(){
+  zipCode.onfocus = function cleanZipCodeError(){
+    var error = document.getElementById("zipCodeError");
+    error.style.display = "none";
+    document.getElementById("zipCode").style.background = "rgb(255 255 255)";
+  }
+
+  function validateInputIdNumber(){
     var inputIdNumber = idNumber.value;
-    var error = document.getElementById("idNumberError");
-    console.log(inputIdNumber.length);
     if (inputIdNumber.length < 7 || inputIdNumber.length > 8 || !validateNumbersRegex(inputIdNumber)){
+      return false;      
+    } else {
+      return true;
+    }
+  }
+
+  function cleanIdNumberError(){
+    var error = document.getElementById("idNumberError");
+    error.style.display = "none";
+    document.getElementById("idNumber").style.background = "rgb(255 255 255)";
+  }
+
+  idNumber.onfocus = function (){
+    cleanIdNumberError();
+  }
+
+  idNumber.onblur = function (){
+    var error = document.getElementById("idNumberError");
+    if(!validateInputIdNumber()){
       var message = "The ID must be 7 or 8 numbers long.";
       error.innerHTML = message;
       error.style.display = "block";
-      document.getElementById("idNumber").style.background = "rgb(255 165 165 / 58%)";      
-    } else {
+      document.getElementById("idNumber").style.background = "rgb(255 165 165 / 58%)";
+      /*validations.idNumberValid = false;*/
+    }else{
       error.style.display = "none";
       document.getElementById("idNumber").style.background = "rgb(255 255 255)";
-    }
+      /*validations.idNumberValid = true;*/
+    };
   }
+
+  buttonSubmit.onclick = function validateForm(){
+    for(var i = 0; i < validations.length; i++){
+
+    }
   
+  } 
 
 }
 
@@ -175,6 +261,6 @@ function validateNumbersRegex(num){
 }
 
 function validateAlphanumeric(str){
-  const re = /^[a-zA-Z0-9]+$/;
+  const re = /^[a-zA-Z0-9_ ]+$/;
   return re.test(String(str).toLowerCase());
 }

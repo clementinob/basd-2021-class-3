@@ -1,22 +1,59 @@
 #header_Salute{
   padding-left: 10%;
-  font-size: 2em;
+  font-size: 1.7em;
 }
 
-#form {
+form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-left: 15%;
+  font-size: 1.2em;
 }
 
-#form input{
+form p{
+  margin-bottom: 5px;
+}
+
+form div{
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  width: 90%;
+}
+
+form input{
   justify-content: center;
-  height: 25px;
-  width: 200px;
+  height: 35px;
+  width: 70%;
+  max-width: 415px;
   margin: 5px 0px;
 }
 
 .error_Message {
   color: red;
+  height: 20px;
+}
+
+
+#buttonSubmit {
+  height: 40px;
+  width: 35%;
+  max-width: 160px;
+  background-color: #358600;
+  color: white;
+  border-radius: 5px;
+  margin: 0 auto 10px auto;
+}
+
+@media only screen and (min-width: 768px){
+  #form {
+    font-size: 1.3em;
+  }
+
+  .form_Wrapper{
+    display: flex;
+    flex-direction: row;
+    padding-right: 30px;
+  }
 }

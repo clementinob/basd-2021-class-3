@@ -1,5 +1,5 @@
 window.onload = function() {
-  
+  // Inputs
   var fullName = document.getElementById("fullName");
   var email = document.getElementById("email");
   var password = document.getElementById("password");
@@ -9,230 +9,277 @@ window.onload = function() {
   var city = document.getElementById("city");
   var zipCode = document.getElementById("zipCode");
   var idNumber = document.getElementById("idNumber");
+  //Errors
+  var fullNameError = document.getElementById("fullNameError");
+  var emailError = document.getElementById("emailError");
+  var passwordError = document.getElementById("passwordError");
+  var ageError = document.getElementById("ageError");
+  var phoneError = document.getElementById("phoneError");
+  var adressError = document.getElementById("adressError");
+  var cityError = document.getElementById("cityError");
+  var zipCodeError = document.getElementById("zipCodeError");
+  var idNumberError = document.getElementById("idNumberError");
+  //Button
   var buttonSubmit = document.getElementById("buttonSubmit");
+  
 
- /* var validations = {
-    fullNameValid : false,
-    emailValid : false,
-    passwordValid : false,
-    ageValid : false,
-    phoneValid : false,
-    adressValid : false,
-    cityValid : false,
-    zipCodeValid : false,
-    idNumberValid : false
-  };*/
-
-  fullName.onblur = function validateFullName() {
-    var inputName = fullName.value;
-    var error = document.getElementById("fullNameError");
-    if (inputName.length < 6 || inputName.indexOf(' ') == -1 || !validateLetters(inputName)){
-      var message = "Must be at least 6 letters long and have a space between";
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("fullName").style.background = "rgb(255 165 165 / 58%)";      
-    } else {
-      error.style.display = "none";
-      document.getElementById("fullName").style.background = "rgb(255 255 255)";
+  // FullName
+  fullName.onblur = function(){
+    if(validateFullName()){
+      fullNameError.innerText = "Must be at least 6 letters long and have a space between";
+      fullName.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      fullNameError.innerText = "";
+      fullName.style.background = "rgb(255 255 255)";
     }
-  }
-
-  fullName.onfocus = function cleanFullNameError(){
-    var error = document.getElementById("fullNameError");
-    error.style.display = "none";
-    document.getElementById("fullName").style.background = "rgb(255 255 255)";
-  }
-
-  email.onblur = function validateEmail() {
-    var inputEmail = email.value;
-    var error = document.getElementById("emailError");
-    if (!validateEmailRegex(inputEmail)){
-      var message = "Must enter a valid email";
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("email").style.background = "rgb(255 165 165 / 58%)";      
-    } else {
-      error.style.display = "none";
-      document.getElementById("email").style.background = "rgb(255 255 255)";
-    }
-  }
-
-  email.onfocus = function cleanEmailError(){
-    var error = document.getElementById("emailError");
-    error.style.display = "none";
-    document.getElementById("email").style.background = "rgb(255 255 255)";
-  }
-
-  password.onblur = function validatePassword(){
-    var inputPassword = password.value;
-    var error = document.getElementById("passwordError");
-
-    if(!validatePasswordRegex(inputPassword)) {
-      var message = 'The password must be at least 8 characters long and only contain letters and numbers';
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("password").style.background = "rgb(255 165 165 / 58%)";
-    } else {
-      error.style.display = "none";
-      document.getElementById("password").style.background = "rgb(255 255 255)";
-    }
-  }
-
-  password.onfocus = function cleanPasswordError(){
-    var error = document.getElementById("passwordError");
-    error.style.display = "none";
-    document.getElementById("password").style.background = "rgb(255 255 255)";
   }
   
-  age.onblur = function validateInputAge(){
+  fullName.onfocus = cleanFullNameError;
+  
+  function validateFullName() {
+    var inputName = fullName.value;
+    return (inputName.length < 6 || inputName.indexOf(' ') == -1 || !validateLetters(inputName))
+  }
+
+  function cleanFullNameError(){
+    fullNameError.innerText = "";
+    fullName.style.background = "rgb(255 255 255)";
+  }
+
+  // Email
+  email.onblur = function(){
+    if(!validateEmail()){
+      emailError.innerText = "Must enter a valid email";
+      email.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      emailError.innerText = "";
+      email.style.background = "rgb(255 255 255)";
+    }
+  }
+
+  function validateEmail() {
+    var inputEmail = email.value;
+    return(validateEmailRegex(inputEmail));
+  }
+
+  function cleanEmailError(){
+    emailError.innerText = "";
+    email.style.background = "rgb(255 255 255)";
+  }
+
+  // Password 
+  password.onblur = function(){
+    if(!validatePassword()){
+      passwordError.innerText = "The password must be at least 8 characters long and only contain letters and numbers";
+      password.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      passwordError.innerText = "";
+      password.style.background = "rgb(255 255 255)";
+    }
+  }
+  
+  function validatePassword(){
+    var inputPassword = password.value;
+    return(validatePasswordRegex(inputPassword))
+  }
+
+  function cleanPasswordError(){
+    passwordError.innerText = "";
+    password.style.background = "rgb(255 255 255)";
+  }
+  
+// Age
+  age.onblur = function(){
+    if(!validateInputAge()){
+      ageError.innerText = "Must be whole numbers and be at least 18 years old.";
+      age.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      ageError.innerText = "";
+      age.style.background = "rgb(255 255 255)";
+    }
+  }
+
+  function validateInputAge(){
     var inputAge = age.value;
-    var error = document.getElementById("ageError");
+    return(validateAge(inputAge))
+  }
 
-    if(!validateAge(inputAge)) {
-      var message = 'Must be whole numbers and be at least 18 years old.';
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("age").style.background = "rgb(255 165 165 / 58%)";
-    } else {
-      error.style.display = "none";
-      document.getElementById("age").style.background = "rgb(255 255 255)";
+  function cleanAgeError(){
+    ageError.innerText = "";
+    age.style.background = "rgb(255 255 255)";
+  }
+
+  //Phone
+  phone.onblur = function(){
+    if(validateInputPhone()){
+      phoneError.innerText = "The entered phone must have at least 7 numbers and accepts only numeric characters.";
+      phone.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      phoneError.innerText = "";
+      phone.style.background = "rgb(255 255 255)";
     }
   }
 
-  age.onfocus = function cleanAgeError(){
-    var error = document.getElementById("ageError");
-    error.style.display = "none";
-    document.getElementById("age").style.background = "rgb(255 255 255)";
-  }
-
-  phone.onblur = function validateInputPhone(){
+  function validateInputPhone(){
     var inputPhone = phone.value;
-    var error = document.getElementById("phoneError");
+    return(inputPhone.length < 7 || inputPhone.indexOf(' ') != -1 || !validateNumbersRegex(inputPhone))
+  }
 
-    if (inputPhone.length < 7 || inputPhone.indexOf(' ') != -1 || !validateNumbersRegex(inputPhone)){
-      var message = "The entered phone must have at least 7 numbers and accepts only numeric characters.";
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("phone").style.background = "rgb(255 165 165 / 58%)";      
-    } else {
-      error.style.display = "none";
-      document.getElementById("phone").style.background = "rgb(255 255 255)";
+  function cleanPhoneError(){
+    phoneError.innerText = "";
+    phone.style.background = "rgb(255 255 255)";
+  }
+
+  //Adress Todo
+  adress.onblur = function(){
+    if(validateInputAdress()){
+      adressError.innerText = "The adress must have at least 5 alphanumeric characters separated by a with a white space"
+      adress.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      adressError.innerText = "";
+      adress.style.background = "rgb(255 255 255)";
     }
   }
 
-  phone.onfocus = function cleanPhoneError(){
-    var error = document.getElementById("phoneError");
-    error.style.display = "none";
-    document.getElementById("phone").style.background = "rgb(255 255 255)";
-  }
-
-  adress.onblur = function validateInputAdress(){
+  function validateInputAdress(){
     var inputAdress = adress.value;
-    var error = document.getElementById("adressError");
+    return(inputAdress.length < 5 || inputAdress.indexOf(' ') == -1 || !validateAlphanumeric(inputAdress))
+  }
 
-    if (inputAdress.length < 5 || inputAdress.indexOf(' ') == -1 || !validateAlphanumeric(inputAdress.value)){
-      var message = "The address entered must be at least 5 alphanumeric characters and separated by a blank space.";
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("adress").style.background = "rgb(255 165 165 / 58%)";      
-    } else {
-      error.style.display = "none";
-      document.getElementById("adress").style.background = "rgb(255 255 255)";
+  function cleanAdressError(){
+    adressError.innerText = "";
+    adress.style.background = "rgb(255 255 255)";
+  }
+
+  //City
+  city.onblur = function(){
+    if(!validateInputCity()){
+      cityError.innerText = "The city must have at least 3 or more characters.";
+      city.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      cityError.innerText = "";
+      city.style.background = "rgb(255 255 255)";
     }
   }
 
-  adress.onfocus = function cleanFAdressError(){
-    var error = document.getElementById("adressError");
-    error.style.display = "none";
-    document.getElementById("adress").style.background = "rgb(255 255 255)";
-  }
-
-  city.onblur = function validateInputCity(){
+  function validateInputCity(){
     var inputCity = city.value;
-    var error = document.getElementById("cityError");
+    return(inputCity.length > 3)
+  }
 
-    if (inputCity.length < 3){
-      var message = "The city must have at least 3 or more characters.";
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("city").style.background = "rgb(255 165 165 / 58%)";      
-    } else {
-      error.style.display = "none";
-      document.getElementById("city").style.background = "rgb(255 255 255)";
+  function cleanCityError(){
+    cityError.innerText = "";
+    city.style.background = "rgb(255 255 255)";
+  }
+
+  //ZipCode
+  zipCode.onblur = function(){
+    if(!validateInputZipCode()){
+      zipCodeError.innerText = "The zip code must have at least 3 or more characters.";
+      zipCode.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      zipCodeError.innerText = "";
+      zipCode.style.background = "rgb(255 255 255)";
     }
   }
 
-  city.onfocus = function cleanCityError(){
-    var error = document.getElementById("cityError");
-    error.style.display = "none";
-    document.getElementById("city").style.background = "rgb(255 255 255)";
-  }
-
-  zipCode.onblur = function validateInputZipCode(){
+  function validateInputZipCode(){
     var inputZipCode = zipCode.value;
-    var error = document.getElementById("zipCodeError");
-
-    if (inputZipCode.length < 3){
-      var message = "The zip code must have at least 3 or more characters.";
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("zipCode").style.background = "rgb(255 165 165 / 58%)";      
-    } else {
-      error.style.display = "none";
-      document.getElementById("zipCode").style.background = "rgb(255 255 255)";
-    }
+    return(inputZipCode.length >= 3)
   }
 
-  zipCode.onfocus = function cleanZipCodeError(){
-    var error = document.getElementById("zipCodeError");
-    error.style.display = "none";
-    document.getElementById("zipCode").style.background = "rgb(255 255 255)";
+  function cleanZipCodeError(){
+    zipCodeError.innerText = "";
+    zipCode.style.background = "rgb(255 255 255)";
+  }
+
+  //ID
+  idNumber.onblur = function(){
+    if(!validateInputIdNumber()){
+      idNumberError.innerText = "The ID must be 7 or 8 numbers long.";
+      idNumber.style.background = "rgb(255 165 165 / 58%)";
+    }else{
+      idNumberError.innerText = "";
+      idNumber.style.background = "rgb(255 255 255)";
+    };
   }
 
   function validateInputIdNumber(){
     var inputIdNumber = idNumber.value;
-    if (inputIdNumber.length < 7 || inputIdNumber.length > 8 || !validateNumbersRegex(inputIdNumber)){
-      return false;      
-    } else {
-      return true;
-    }
+    console.log((inputIdNumber.length >= 7 && inputIdNumber.length <= 8) || validateNumbersRegex(inputIdNumber))
+    return (inputIdNumber.length >= 7 || inputIdNumber.length <= 8 || validateNumbersRegex(inputIdNumber))
   }
 
   function cleanIdNumberError(){
-    var error = document.getElementById("idNumberError");
-    error.style.display = "none";
-    document.getElementById("idNumber").style.background = "rgb(255 255 255)";
+    idNumberError.innerText = "";
+    idNumber.style.background = "rgb(255 255 255)";
   }
 
-  idNumber.onfocus = function (){
-    cleanIdNumberError();
-  }
-
-  idNumber.onblur = function (){
-    var error = document.getElementById("idNumberError");
-    if(!validateInputIdNumber()){
-      var message = "The ID must be 7 or 8 numbers long.";
-      error.innerHTML = message;
-      error.style.display = "block";
-      document.getElementById("idNumber").style.background = "rgb(255 165 165 / 58%)";
-      /*validations.idNumberValid = false;*/
-    }else{
-      error.style.display = "none";
-      document.getElementById("idNumber").style.background = "rgb(255 255 255)";
-      /*validations.idNumberValid = true;*/
-    };
-  }
+  email.onfocus = cleanEmailError;
+  password.onfocus = cleanPasswordError;
+  age.onfocus = cleanAgeError;
+  phone.onfocus = cleanPhoneError;
+  adress.onfocus = cleanAdressError;
+  city.onfocus = cleanCityError;
+  zipCode.onfocus = cleanZipCodeError;
+  idNumber.onfocus = cleanIdNumberError;
 
   buttonSubmit.onclick = function validateForm(){
-    for(var i = 0; i < validations.length; i++){
-
+    var errorMsg = "";
+    
+    if (!validateFullName()){
+      errorMsg = "- Full Name not valid. \n";
     }
-  
-  } 
+    if (!validateEmail()){
+      errorMsg += "- Email not valid. \n";
+    }
+    if (!validatePassword()){
+      errorMsg += "- Password not valid. \n";
+    }
+    if (!validateInputPhone()){
+      errorMsg += "- Age not valid. \n";
+    }
+    if (!validateInputAdress()){
+      errorMsg += "- Adress not valid. \n";
+    }
+    if (!validateInputCity()){
+      errorMsg += "- City not valid. \n";
+    }
+    if (!validateInputZipCode()){
+      errorMsg += "- Zip Code not valid. \n";
+    }
+    if (!validateInputIdNumber()){
+      errorMsg += "- ID not valid. \n";
+    }
+
+    if (errorMsg.length =! 0){
+      alert(errorMsg);
+    }else{
+      var formValues =  "Full Name: " + fullName.value 
+                      + "\n Email: " + email.value
+                      + "\n Password: " + password.value
+                      + "\n Age: " + age.value
+                      + "\n Phone: " + phone.value
+                      + "\n Adress: " + adress.value
+                      + "\n City: " + city.value
+                      + "\n Zip Code: " + zipCode.value
+                      + "\n ID Number: " + idNumber.value
+      alert(formValues);
+    }   
+  }
+
+
+  var salute = document.getElementById("dynamicSalute")
+    fullName.onkeydown = function(){
+      salute.innerText=(" "+fullName.value); 
+    }
+    fullName.onfocus=function(){
+      salute.innerText=(" " +fullName.value);
+    }
 
 }
 
-function validateLetters (str){
+function validateLetters(str){
   const re = /^[a-zA-Z\s]*$/;
   return re.test(String(str).toLowerCase());
 }
@@ -248,11 +295,7 @@ function validatePasswordRegex(password) {
 }
 
 function validateAge(age){
-  if (age % 1 == 0 && age >= 18){   
-    return true;
-  } else{
-    return false;
-  }
+  return age % 1 == 0 && age >= 18;    
 }
 
 function validateNumbersRegex(num){

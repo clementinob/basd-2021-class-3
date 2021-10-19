@@ -72,38 +72,63 @@
     </div>
 
     <section id="header_Salute">
-      <h2>HI, </h2>
+      <h2>HI, <span id="dynamicSalute"></span></h2>
     </section>
-    <form id="form">
-      <p>Full Name</p>
-      <input id="fullName" type="text" name="fullName" >
-      <div id="fullNameError" class="error_Message"></div>
-      <p>Email</p>
-      <input id="email" type="email" name="email" >
-      <div id="emailError" class="error_Message"></div>
-      <p>Password</p>
-      <input id="password" type="password" name="password" >
-      <div id="passwordError" class="error_Message"></div>
-      <p>Age</p>
-      <input id="age" type="number" name="age" >
-      <div id="ageError" class="error_Message"></div>
-      <p>Phone</p>
-      <input id="phone" type="number" name="phone" >
-      <div id="phoneError" class="error_Message"></div>
-      <p>Adress</p>
-      <input id="adress" type="text" name="adress" >
-      <div id="adressError" class="error_Message"></div>
-      <p>City</p>
-      <input id="city" type="text" name="city" >
-      <div id="cityError" class="error_Message"></div>
-      <p>Zip Code</p>
-      <input id="zipCode" type="text" name="zipCode" >
-      <div id="zipCodeError" class="error_Message"></div>
-      <p>ID Number</p>
-      <input id="idNumber" type="number" name="idNumber" >
-      <div id="idNumberError" class="error_Message"></div>
-
-      <button id="buttonSubmit" type="submit" class="newsletter_Button">Subscribe</button>
+    <form>
+      <div class="form_Wrapper">
+        <div class="form_Column">
+          <div>
+            <p>Full Name</p>
+            <input id="fullName" type="text" name="fullName" required>
+            <span id="fullNameError" class="error_Message"></span>
+          </div>
+          <div>
+            <p>Email</p>
+            <input id="email" type="email" name="email" required>
+            <span id="emailError" class="error_Message"></span>
+          </div>
+          <div>
+            <p>Password</p>
+            <input id="password" type="password" name="password" required>
+            <span id="passwordError" class="error_Message"></span>
+          </div>
+          <div>
+            <p>Age</p>
+            <input id="age" type="number" name="age" required>
+            <span id="ageError" class="error_Message"></span>
+          </div>
+          <div>
+            <p>Phone</p>
+            <input id="phone" type="number" name="phone" required>
+            <span id="phoneError" class="error_Message"></span>
+          </div>
+        </div>
+        <div>
+          <div>
+            <p>Adress</p>
+            <input id="adress" type="text" name="adress" required>
+            <span id="adressError" class="error_Message"></span>
+          </div>
+          <div>
+            <p>City</p>
+            <input id="city" type="text" name="city" required>
+            <span id="cityError" class="error_Message"></span>
+          </div>
+          <div>
+            <p>Zip Code</p>
+            <input id="zipCode" type="text" name="zipCode" required>
+            <span id="zipCodeError" class="error_Message"></span>
+          </div>
+          <div>
+            <p>ID Number</p>
+            <input id="idNumber" type="text" name="idNumber" required>
+            <span id="idNumberError" class="error_Message"></span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button id="buttonSubmit" type="button" class="newsletter_Button">Subscribe</button>
+      </div>
     </form>
 
   </main>

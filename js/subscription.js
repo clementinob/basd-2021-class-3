@@ -1,4 +1,6 @@
 window.onload = function() {
+  //Title
+  var salute = document.getElementById("dynamicSalute");
   // Inputs
   var fullName = document.getElementById("fullName");
   var email = document.getElementById("email");
@@ -22,10 +24,9 @@ window.onload = function() {
   //Button
   var buttonSubmit = document.getElementById("buttonSubmit");
   
-
   // FullName
   fullName.onblur = function(){
-    if(validateFullName()){
+    if(!validateFullName()){
       fullNameError.innerText = "Must be at least 6 letters long and have a space between";
       fullName.style.background = "rgb(255 165 165 / 58%)";
     }else{
@@ -34,11 +35,9 @@ window.onload = function() {
     }
   }
   
-  fullName.onfocus = cleanFullNameError;
-  
   function validateFullName() {
     var inputName = fullName.value;
-    return (inputName.length < 6 || inputName.indexOf(' ') == -1 || !validateLetters(inputName))
+    return (inputName.length >= 6 && inputName.indexOf(' ') != -1 && validateLetters(inputName))
   }
 
   function cleanFullNameError(){
@@ -88,7 +87,7 @@ window.onload = function() {
     password.style.background = "rgb(255 255 255)";
   }
   
-// Age
+  // Age
   age.onblur = function(){
     if(!validateInputAge()){
       ageError.innerText = "Must be whole numbers and be at least 18 years old.";
@@ -111,7 +110,7 @@ window.onload = function() {
 
   //Phone
   phone.onblur = function(){
-    if(validateInputPhone()){
+    if(!validateInputPhone()){
       phoneError.innerText = "The entered phone must have at least 7 numbers and accepts only numeric characters.";
       phone.style.background = "rgb(255 165 165 / 58%)";
     }else{
@@ -122,7 +121,7 @@ window.onload = function() {
 
   function validateInputPhone(){
     var inputPhone = phone.value;
-    return(inputPhone.length < 7 || inputPhone.indexOf(' ') != -1 || !validateNumbersRegex(inputPhone))
+    return(inputPhone.length >= 7 && inputPhone.indexOf(' ') === -1 && validateNumbersRegex(inputPhone))
   }
 
   function cleanPhoneError(){
@@ -132,7 +131,7 @@ window.onload = function() {
 
   //Adress Todo
   adress.onblur = function(){
-    if(validateInputAdress()){
+    if(!validateInputAdress()){
       adressError.innerText = "The adress must have at least 5 alphanumeric characters separated by a with a white space"
       adress.style.background = "rgb(255 165 165 / 58%)";
     }else{
@@ -143,7 +142,7 @@ window.onload = function() {
 
   function validateInputAdress(){
     var inputAdress = adress.value;
-    return(inputAdress.length < 5 || inputAdress.indexOf(' ') == -1 || !validateAlphanumeric(inputAdress))
+    return(inputAdress.length >= 5 && inputAdress.indexOf(' ') != -1 && validateAlphanumeric(inputAdress))
   }
 
   function cleanAdressError(){
@@ -206,8 +205,7 @@ window.onload = function() {
 
   function validateInputIdNumber(){
     var inputIdNumber = idNumber.value;
-    console.log((inputIdNumber.length >= 7 && inputIdNumber.length <= 8) || validateNumbersRegex(inputIdNumber))
-    return (inputIdNumber.length >= 7 || inputIdNumber.length <= 8 || validateNumbersRegex(inputIdNumber))
+    return (inputIdNumber.length >= 7 && inputIdNumber.length <= 8 && validateNumbersRegex(inputIdNumber))
   }
 
   function cleanIdNumberError(){
@@ -226,6 +224,7 @@ window.onload = function() {
 
   buttonSubmit.onclick = function validateForm(){
     var errorMsg = "";
+    console.log("Primer log: "+ errorMsg.length);
     
     if (!validateFullName()){
       errorMsg = "- Full Name not valid. \n";
@@ -252,7 +251,10 @@ window.onload = function() {
       errorMsg += "- ID not valid. \n";
     }
 
+    console.log("Segundo log: " + errorMsg.length)
+
     if (errorMsg.length =! 0){
+      console.log("Entro al true del if");
       alert(errorMsg);
     }else{
       var formValues =  "Full Name: " + fullName.value 
@@ -263,19 +265,15 @@ window.onload = function() {
                       + "\n Adress: " + adress.value
                       + "\n City: " + city.value
                       + "\n Zip Code: " + zipCode.value
-                      + "\n ID Number: " + idNumber.value
+                      + "\n ID Number: " + idNumber.value;
+      console.log("Entro al false del if. Form values log: " + formValues);
       alert(formValues);
-    }   
+    }
   }
 
-
-  var salute = document.getElementById("dynamicSalute")
-    fullName.onkeydown = function(){
+  fullName.onkeyup = function(){
       salute.innerText=(" "+fullName.value); 
-    }
-    fullName.onfocus=function(){
-      salute.innerText=(" " +fullName.value);
-    }
+  }
 
 }
 

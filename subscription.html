@@ -9,12 +9,14 @@
     <title>RR News Portal - Subscribe</title>
     <!-- JS -->
     <script src="./js/subscription.js"></script>
+    <script src="./js/modal.js"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="./styles/normalizer.css" />
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/subscription.css" />
     <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/footer.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -131,6 +133,23 @@
       </div>
     </form>
 
+    <!-- MODAL -->
+    <button id="modalBtn" class="button">Open modal</button>
+
+    <div id="simpleModal" class="modal">
+      <div class="modal_Content">
+        <div class="modal_Header">
+          <span class="closeBtn">&times;</span>
+          <h2>Header</h2>
+        </div>
+        <div class="modal_Body">
+          <p>Hello i'm a modal</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque laborum a asperiores cupiditate 
+            quisquam iste, laudantium dolor magnam pariatur voluptate.</p>
+        </div>
+      </div>
+    </div>
+    <!-- /MODAL -->
   </main>
   <footer>
     <div class="nav_Wrapper">
@@ -180,3 +199,8 @@
   </footer>
 </body>
 </html>
+
+
+
+
+

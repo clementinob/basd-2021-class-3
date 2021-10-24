@@ -23,6 +23,10 @@ window.onload = function() {
   var idNumberError = document.getElementById("idNumberError");
   //Button
   var buttonSubmit = document.getElementById("buttonSubmit");
+  // Modal
+  var modal = document.getElementById("simpleModal");
+  var modalBtn = document.getElementById("modalBtn");
+  var closeBtn = document.getElementsByClassName("closeBtn")[0];
   
   // FullName
   fullName.onblur = function(){
@@ -213,6 +217,7 @@ window.onload = function() {
     idNumber.style.background = "rgb(255 255 255)";
   }
 
+  fullName.onfocus = cleanFullNameError;
   email.onfocus = cleanEmailError;
   password.onfocus = cleanPasswordError;
   age.onfocus = cleanAgeError;
@@ -222,38 +227,45 @@ window.onload = function() {
   zipCode.onfocus = cleanZipCodeError;
   idNumber.onfocus = cleanIdNumberError;
 
-  buttonSubmit.onclick = function validateForm(){
+  buttonSubmit.addEventListener('click', validateForm);
+  
+  function validateForm(e){
+    e.preventDefault();
+
     var errorMsg = "";
     console.log("Primer log: "+ errorMsg.length);
     
-    if (!validateFullName()){
+    if (validateFullName() === false){
       errorMsg = "- Full Name not valid. \n";
     }
-    if (!validateEmail()){
+    if (validateEmail() === false){
       errorMsg += "- Email not valid. \n";
     }
-    if (!validatePassword()){
+    if (validatePassword() === false){
       errorMsg += "- Password not valid. \n";
     }
-    if (!validateInputPhone()){
+    if (validateInputAge() === false){
       errorMsg += "- Age not valid. \n";
     }
-    if (!validateInputAdress()){
+    if (validateInputPhone() === false){
+      errorMsg += "- Phone not valid. \n";
+    }
+    if (validateInputAdress() === false){
       errorMsg += "- Adress not valid. \n";
     }
-    if (!validateInputCity()){
+    if (validateInputCity() === false){
       errorMsg += "- City not valid. \n";
     }
-    if (!validateInputZipCode()){
+    if (validateInputZipCode() === false){
       errorMsg += "- Zip Code not valid. \n";
     }
-    if (!validateInputIdNumber()){
+    if (validateInputIdNumber() === false){
       errorMsg += "- ID not valid. \n";
     }
 
     console.log("Segundo log: " + errorMsg.length)
 
-    if (errorMsg.length =! 0){
+    if (errorMsg.length != 0){
       console.log("Entro al true del if");
       alert(errorMsg);
     }else{
@@ -273,6 +285,25 @@ window.onload = function() {
 
   fullName.onkeyup = function(){
       salute.innerText=(" "+fullName.value); 
+  }
+
+  //Modal
+  modalBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  window.addEventListener('click', clickOutside);
+
+  function openModal(){
+    modal.style.display = "block";
+  }
+
+  function closeModal(){
+    modal.style.display = "none";
+  }
+
+  function clickOutside(ev){
+    if (ev.target == modal){
+      modal.style.display = "none";
+    }
   }
 
 }

@@ -81,7 +81,7 @@
         <div class="form_Column">
           <div>
             <p>Full Name</p>
-            <input id="fullName" type="text" name="fullName" required>
+            <input id="fullName" type="text" name="name" required>
             <span id="fullNameError" class="error_Message"></span>
           </div>
           <div>
@@ -138,14 +138,13 @@
 
     <div id="simpleModal" class="modal">
       <div class="modal_Content">
-        <div class="modal_Header">
+        <div id="modalHeader" class="modal_Header">
           <span class="closeBtn">&times;</span>
-          <h2>Header</h2>
+          <h2></h2>
         </div>
         <div class="modal_Body">
-          <p>Hello i'm a modal</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque laborum a asperiores cupiditate 
-            quisquam iste, laudantium dolor magnam pariatur voluptate.</p>
+          <p>User info:</p>
+          <p id="modalText"></p>
         </div>
       </div>
     </div>

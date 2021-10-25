@@ -21,12 +21,17 @@ window.onload = function() {
   var cityError = document.getElementById("cityError");
   var zipCodeError = document.getElementById("zipCodeError");
   var idNumberError = document.getElementById("idNumberError");
+  //URL
+  var URL = "https://curso-dev-2021.herokuapp.com/newsletter";
+
   //Button
   var buttonSubmit = document.getElementById("buttonSubmit");
   // Modal
   var modal = document.getElementById("simpleModal");
   var modalBtn = document.getElementById("modalBtn");
   var closeBtn = document.getElementsByClassName("closeBtn")[0];
+  var modalHeader = document.getElementById("modalHeader");
+  var modalText = document.getElementById("modalText");
   
   // FullName
   fullName.onblur = function(){
@@ -227,14 +232,16 @@ window.onload = function() {
   zipCode.onfocus = cleanZipCodeError;
   idNumber.onfocus = cleanIdNumberError;
 
+  fullName.onkeyup = function(){
+    salute.innerText=(" "+fullName.value); 
+}
+
   buttonSubmit.addEventListener('click', validateForm);
   
   function validateForm(e){
     e.preventDefault();
-
-    var errorMsg = "";
-    console.log("Primer log: "+ errorMsg.length);
-    
+    /*var errorMsg = "";
+  
     if (validateFullName() === false){
       errorMsg = "- Full Name not valid. \n";
     }
@@ -263,28 +270,152 @@ window.onload = function() {
       errorMsg += "- ID not valid. \n";
     }
 
-    console.log("Segundo log: " + errorMsg.length)
-
     if (errorMsg.length != 0){
-      console.log("Entro al true del if");
       alert(errorMsg);
-    }else{
-      var formValues =  "Full Name: " + fullName.value 
-                      + "\n Email: " + email.value
-                      + "\n Password: " + password.value
-                      + "\n Age: " + age.value
-                      + "\n Phone: " + phone.value
-                      + "\n Adress: " + adress.value
-                      + "\n City: " + city.value
-                      + "\n Zip Code: " + zipCode.value
-                      + "\n ID Number: " + idNumber.value;
-      console.log("Entro al false del if. Form values log: " + formValues);
-      alert(formValues);
-    }
+    }else{*/
+      sendForm();
+   // }
   }
 
-  fullName.onkeyup = function(){
-      salute.innerText=(" "+fullName.value); 
+  //Send Data
+
+  /*
+  function modalMsg(e) {
+    var url = 'http://curso-dev-2021.herokuapp.com/newsletter?';
+    var queryParams = `name=${nameInput.value}&email=${emailInput.value}
+    &password=${passwordInput.value}&confirmPassword=${confirmPasswordInput.value}&age=${ageInput.value}&phone=${phoneNumInput.value}
+    &address=${addressInput.value}&city=${cityInput.value}&postalCode=${postCodeInput.value}
+    &dni=${dniInput.value}`;
+    fetch(`${url}${queryParams}`)
+        .then(response =>
+            response.js
+  */
+  function handleError (response) {
+    if (response.status !== 200) {
+        throw Error(response.status);
+    }
+    return response;
+  }
+  
+  function handledFetch (request) {
+    return fetch(request)
+      .then(handleError);
+  }
+
+  function sendForm(){
+    var URL_VALUES =  "?"+fullName.name+"="+fullName.value+
+                      "&"+email.name+"="+email.value+
+                      "&"+password.name+"="+password.value+
+                      "&"+age.name+"="+age.value+
+                      "&"+phone.name+"="+phone.value+
+                      "&"+adress.name+"="+adress.value+
+                      "&"+city.name+"="+city.value+
+                      "&"+zipCode.name+"="+zipCode.value+
+                      "&"+idNumber.name+"="+idNumber.value;
+
+    
+
+     fetch(URL+URL_VALUES)
+      .then (function resolve(response){
+          if (response.status === 200){
+            console.log("Status1: ", response.status);
+            console.log(response);
+            modalHeader.innerText="Everything was sent correctly";
+            loadLocalStorage();
+            return response;
+          }
+          else{
+            console.log("Status2: "+response.status);
+            console.log(response.json());
+
+            modalText.innerText = "ERROR! " + response.statusText;
+            clearLocalStorage();
+            //return response.statusText;
+            return response;
+          }
+      })
+      .then(function (data){
+        if (data.status === 200){
+          console.log("ENTRO ACA" + data);
+          var prueba = data.json();
+          console.log("ENTRO ACA2" + prueba);
+          modalText.innerText = "Full Name: "+prueba.name+"\n"
+                                "Email: "+prueba.email+"\n"
+                                "Password: "+prueba.password+"\n"
+                                "Age: "+prueba.age+"\n"
+                                "Phone: "+prueba.phone+"\n"
+                                "Adress: "+prueba.adress+"\n"
+                                "City: "+prueba.city+"\n"
+                                "Zip Code: "+prueba.zipCode+"\n"
+                                "ID: "+prueba.idNumber+"\n";
+          
+          console.log(modalText.innerText);
+        }else{
+
+        }
+
+      })
+      .catch(function (){
+        modalHeader.innerText="Oops!";
+        modalText.innerText="Something went wrong";
+      })
+  }
+
+  //Local Storage - Load Data
+  function loadLocalStorage(){
+    localStorage.setItem(fullName.name,fullName.value)
+    localStorage.setItem(email.name,email.value)
+    localStorage.setItem(password.name,password.value)
+    localStorage.setItem(age.name,age.value)
+    localStorage.setItem(phone.name,phone.value)
+    localStorage.setItem(adress.name,adress.value)
+    localStorage.setItem(city.name,city.value)
+    localStorage.setItem(zipCode.name,zipCode.value)
+    localStorage.setItem(idNumber.name,idNumber.value)
+  }
+
+  function clearLocalStorage(){
+    localStorage.removeItem(fullName.name);
+    localStorage.removeItem(email.name);
+    localStorage.removeItem(password.name);
+    localStorage.removeItem(age.name);
+    localStorage.removeItem(phone.name);
+    localStorage.removeItem(adress.name);
+    localStorage.removeItem(city.name);
+    localStorage.removeItem(zipCode.name);
+    localStorage.removeItem(idNumber.name);
+
+  }
+
+  
+
+  //Local Storage - Reload Data
+  if ((localStorage.getItem("name")) != "") {
+    fullName.value=localStorage.getItem("name");
+  }
+  if ((localStorage.getItem("email")) != "") {
+    email.value=localStorage.getItem("email");
+  }
+  if ((localStorage.getItem("age")) != "") {
+    age.value=localStorage.getItem("age");
+  }
+  if ((localStorage.getItem("password")) != "") {
+    password.value=localStorage.getItem("password");
+  }
+  if ((localStorage.getItem("phone")) != "") {
+    phone.value=localStorage.getItem("phone");
+  }
+  if ((localStorage.getItem("adress")) != "") {
+    adress.value=localStorage.getItem("adress");
+  }
+  if ((localStorage.getItem("city")) != "") {
+    city.value=localStorage.getItem("city");
+  }
+  if ((localStorage.getItem("zipCode")) != "") {
+    zipCode.value=localStorage.getItem("zipCode");
+  }
+  if ((localStorage.getItem("idNumber")) != "") {
+    idNumber.value=localStorage.getItem("idNumber");
   }
 
   //Modal
@@ -307,6 +438,8 @@ window.onload = function() {
   }
 
 }
+
+
 
 function validateLetters(str){
   const re = /^[a-zA-Z\s]*$/;

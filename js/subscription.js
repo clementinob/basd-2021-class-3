@@ -22,16 +22,16 @@ window.onload = function() {
   var zipCodeError = document.getElementById("zipCodeError");
   var idNumberError = document.getElementById("idNumberError");
   //URL
-  var URL = "https://curso-dev-2021.herokuapp.com/newsletter";
-
+  var url = new URL("https://curso-dev-2021.herokuapp.com/newsletter")
   //Button
   var buttonSubmit = document.getElementById("buttonSubmit");
   // Modal
   var modal = document.getElementById("simpleModal");
   var modalBtn = document.getElementById("modalBtn");
   var closeBtn = document.getElementsByClassName("closeBtn")[0];
-  var modalHeader = document.getElementById("modalHeader");
+  var modalHeading = document.getElementById("modalHeading");
   var modalText = document.getElementById("modalText");
+  var modalSubHeader = document.getElementById("modalSubHeader");
   
   // FullName
   fullName.onblur = function(){
@@ -138,7 +138,7 @@ window.onload = function() {
     phone.style.background = "rgb(255 255 255)";
   }
 
-  //Adress Todo
+  //Adress
   adress.onblur = function(){
     if(!validateInputAdress()){
       adressError.innerText = "The adress must have at least 5 alphanumeric characters separated by a with a white space"
@@ -236,11 +236,12 @@ window.onload = function() {
     salute.innerText=(" "+fullName.value); 
 }
 
+  //Validate Form 
   buttonSubmit.addEventListener('click', validateForm);
   
   function validateForm(e){
     e.preventDefault();
-    /*var errorMsg = "";
+    var errorMsg = "";
   
     if (validateFullName() === false){
       errorMsg = "- Full Name not valid. \n";
@@ -272,93 +273,43 @@ window.onload = function() {
 
     if (errorMsg.length != 0){
       alert(errorMsg);
-    }else{*/
+    }else{
       sendForm();
-   // }
+    }
   }
 
   //Send Data
-
-  /*
-  function modalMsg(e) {
-    var url = 'http://curso-dev-2021.herokuapp.com/newsletter?';
-    var queryParams = `name=${nameInput.value}&email=${emailInput.value}
-    &password=${passwordInput.value}&confirmPassword=${confirmPasswordInput.value}&age=${ageInput.value}&phone=${phoneNumInput.value}
-    &address=${addressInput.value}&city=${cityInput.value}&postalCode=${postCodeInput.value}
-    &dni=${dniInput.value}`;
-    fetch(`${url}${queryParams}`)
-        .then(response =>
-            response.js
-  */
-  function handleError (response) {
-    if (response.status !== 200) {
-        throw Error(response.status);
-    }
-    return response;
-  }
-  
-  function handledFetch (request) {
-    return fetch(request)
-      .then(handleError);
-  }
-
   function sendForm(){
-    var URL_VALUES =  "?"+fullName.name+"="+fullName.value+
-                      "&"+email.name+"="+email.value+
-                      "&"+password.name+"="+password.value+
-                      "&"+age.name+"="+age.value+
-                      "&"+phone.name+"="+phone.value+
-                      "&"+adress.name+"="+adress.value+
-                      "&"+city.name+"="+city.value+
-                      "&"+zipCode.name+"="+zipCode.value+
-                      "&"+idNumber.name+"="+idNumber.value;
-
-    
-
-     fetch(URL+URL_VALUES)
-      .then (function resolve(response){
-          if (response.status === 200){
-            console.log("Status1: ", response.status);
-            console.log(response);
-            modalHeader.innerText="Everything was sent correctly";
-            loadLocalStorage();
-            return response;
-          }
-          else{
-            console.log("Status2: "+response.status);
-            console.log(response.json());
-
-            modalText.innerText = "ERROR! " + response.statusText;
-            clearLocalStorage();
-            //return response.statusText;
-            return response;
-          }
-      })
-      .then(function (data){
-        if (data.status === 200){
-          console.log("ENTRO ACA" + data);
-          var prueba = data.json();
-          console.log("ENTRO ACA2" + prueba);
-          modalText.innerText = "Full Name: "+prueba.name+"\n"
-                                "Email: "+prueba.email+"\n"
-                                "Password: "+prueba.password+"\n"
-                                "Age: "+prueba.age+"\n"
-                                "Phone: "+prueba.phone+"\n"
-                                "Adress: "+prueba.adress+"\n"
-                                "City: "+prueba.city+"\n"
-                                "Zip Code: "+prueba.zipCode+"\n"
-                                "ID: "+prueba.idNumber+"\n";
-          
-          console.log(modalText.innerText);
-        }else{
-
+    url.searchParams.append(fullName.name, fullName.value);
+    url.searchParams.append(email.name, email.value);
+    url.searchParams.append(password.name, password.value);
+    url.searchParams.append(age.name, age.value);
+    url.searchParams.append(phone.name, phone.value);
+    url.searchParams.append(adress.name, adress.value);
+    url.searchParams.append(city.name, city.value);
+    url.searchParams.append(zipCode.name, zipCode.value);
+    url.searchParams.append(idNumber.name, idNumber.value);
+    fetch(url)
+    .then (function (response){
+        if (response.status === 200){
+          return response.json();
         }
-
-      })
-      .catch(function (){
-        modalHeader.innerText="Oops!";
-        modalText.innerText="Something went wrong";
-      })
+        else{
+          //localStorage.clear();
+          clearLocalStorage()
+          return response.text()
+          .then (function (msg){
+            throw new Error(msg);
+          })
+        }
+    })
+    .then(function (data){
+        loadLocalStorage();
+        loadModalSuccess(data);
+    })
+    .catch(function (err){
+      modalError(err);
+    })
   }
 
   //Local Storage - Load Data
@@ -373,7 +324,12 @@ window.onload = function() {
     localStorage.setItem(zipCode.name,zipCode.value)
     localStorage.setItem(idNumber.name,idNumber.value)
   }
-
+  //Local Storage - Clean Input Data
+  /* 
+    A localStorage.clear(); en el else del fetch decidí cambiarla por la función clearLocalStorage() porque no sé si al 
+    hacerle el clear al contenido del localStorage elimino por error contenidos de otros formularios. 
+    Es por eso que clearLocalStorage() elimina particularmente los que se ingresaron en loadLocalStorage();
+  */
   function clearLocalStorage(){
     localStorage.removeItem(fullName.name);
     localStorage.removeItem(email.name);
@@ -386,9 +342,6 @@ window.onload = function() {
     localStorage.removeItem(idNumber.name);
 
   }
-
-  
-
   //Local Storage - Reload Data
   if ((localStorage.getItem("name")) != "") {
     fullName.value=localStorage.getItem("name");
@@ -427,6 +380,30 @@ window.onload = function() {
     modal.style.display = "block";
   }
 
+  function loadModalSuccess(data){
+    openModal();
+    modalHeading.innerText = "Everything was sent correctly!";
+    modalHeading.style.color = "green";
+    modalSubHeader.innerText="User info:";
+    modalText.innerText = "Full Name: "+data.name+
+                          "\nEmail: "+data.email+
+                          "\nPassword: "+data.password+
+                          "\nAge: "+data.age+
+                          "\nPhone: "+data.phone+
+                          "\nAdress: "+data.adress+
+                          "\nCity: "+data.city+
+                          "\nZip Code: "+data.zipCode+
+                          "\nID: "+data.idNumber;
+  }
+
+  function modalError(err){
+    openModal();
+    modalHeading.innerText="Oops!";
+    modalHeading.style.color = "red";
+    modalSubHeader.innerText="Something went wrong.";
+    modalText.innerText="HTTP " + err;
+  }
+
   function closeModal(){
     modal.style.display = "none";
   }
@@ -438,8 +415,6 @@ window.onload = function() {
   }
 
 }
-
-
 
 function validateLetters(str){
   const re = /^[a-zA-Z\s]*$/;

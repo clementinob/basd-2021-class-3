@@ -24,6 +24,10 @@
   animation-duration: 0.5s;
 }
 
+#modalText {
+  font-size: 1em;
+}
+
 .closeBtn{
   color: #ccc;
   float: right;
